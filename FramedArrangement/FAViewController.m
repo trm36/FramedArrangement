@@ -11,8 +11,8 @@
 @interface FAViewController ()
 
 @property (strong, nonatomic) UIView *redView;
-@property (strong, nonatomic) UIView *blueView;
 @property (strong, nonatomic) UIView *greenView;
+@property (strong, nonatomic) UIView *blueView;
 @property (strong, nonatomic) UIView *yellowView;
 
 @end
@@ -27,22 +27,51 @@
     self.redView.backgroundColor = [UIColor redColor];
     [self.view addSubview:self.redView];
     
-    self.blueView = [[UIView alloc] init];
-    self.blueView.backgroundColor = [UIColor blueColor];
-    [self.view addSubview:self.blueView];
-    
     self.greenView = [UIView new];
     self.greenView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:self.greenView];
     
+    self.blueView = [[UIView alloc] init];
+    self.blueView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:self.blueView];
+    
     self.yellowView = [UIView new];
     self.yellowView.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:self.yellowView];
+    
+    [self layoutSquares];
+    
+//    [self performSelector:@selector(layoutSquares) withObject:self afterDelay:3.5];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)layoutSquares
+{
+    CGFloat superViewWidth = self.view.frame.size.width;
+
+    self.redView.frame = CGRectMake(0, 0, superViewWidth / 2, superViewWidth / 2);
+    self.greenView.frame = CGRectMake(superViewWidth / 2, 0, superViewWidth / 2, superViewWidth / 2);
+    self.blueView.frame = CGRectMake(0, superViewWidth / 2, superViewWidth / 2, superViewWidth / 2);
+    self.yellowView.frame = CGRectMake(superViewWidth / 2, superViewWidth / 2, superViewWidth / 2, superViewWidth / 2);
+}
+
+- (void)layoutHorizontalRectangles
+{
+    
+}
+
+- (void)layoutVerticleRectangles
+{
+    
+}
+
+- (void)layoutDiagonalSquares
+{
+    
 }
 
 /*
