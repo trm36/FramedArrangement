@@ -39,7 +39,7 @@
     self.yellowView.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:self.yellowView];
     
-    [self layoutHorizontalRectangles];
+    [self layoutVerticalRectangles];
     
 }
 
@@ -70,9 +70,15 @@
     
 }
 
-- (void)layoutVerticleRectangles
+- (void)layoutVerticalRectangles
 {
-
+    CGFloat superViewWidth = self.view.frame.size.width;
+    CGFloat superViewHeight = self.view.frame.size.height;
+    
+    self.redView.frame = CGRectMake(0, 0, superViewWidth / 4, superViewHeight);
+    self.greenView.frame = CGRectMake(superViewWidth / 4, 0, superViewWidth / 4, superViewHeight);
+    self.blueView.frame = CGRectMake(superViewWidth / 4 * 2, 0, superViewWidth / 4, superViewHeight);
+    self.yellowView.frame = CGRectMake(superViewWidth / 4 * 3, 0, superViewWidth / 4, superViewHeight);
 }
 
 - (void)layoutDiagonalSquares
