@@ -39,7 +39,8 @@
     self.yellowView.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:self.yellowView];
     
-    [self layoutDiagonalSquares];
+    [self startCycleViews];
+    
     
 }
 
@@ -56,6 +57,7 @@
     self.greenView.frame = CGRectMake(superViewWidth / 2, 0, superViewWidth / 2, superViewWidth / 2);
     self.blueView.frame = CGRectMake(0, superViewWidth / 2, superViewWidth / 2, superViewWidth / 2);
     self.yellowView.frame = CGRectMake(superViewWidth / 2, superViewWidth / 2, superViewWidth / 2, superViewWidth / 2);
+    [self performSelector:@selector(layoutHorizontalRectangles) withObject:self afterDelay:1.0];
 }
 
 - (void)layoutHorizontalRectangles
@@ -67,6 +69,7 @@
     self.greenView.frame = CGRectMake(0, superViewHeight / 4, superViewWidth, superViewHeight / 4);
     self.blueView.frame = CGRectMake(0, superViewHeight / 4 * 2, superViewWidth, superViewHeight / 4);
     self.yellowView.frame = CGRectMake(0, superViewHeight / 4 * 3, superViewWidth, superViewHeight / 4);
+    [self performSelector:@selector(layoutVerticalRectangles) withObject:self afterDelay:1.0];
     
 }
 
@@ -79,6 +82,7 @@
     self.greenView.frame = CGRectMake(superViewWidth / 4, 0, superViewWidth / 4, superViewHeight);
     self.blueView.frame = CGRectMake(superViewWidth / 4 * 2, 0, superViewWidth / 4, superViewHeight);
     self.yellowView.frame = CGRectMake(superViewWidth / 4 * 3, 0, superViewWidth / 4, superViewHeight);
+    [self performSelector:@selector(layoutDiagonalSquares) withObject:self afterDelay:1.0];
 }
 
 - (void)layoutDiagonalSquares
@@ -90,6 +94,12 @@
     self.greenView.frame = CGRectMake(squareDimension, squareDimension, squareDimension, squareDimension);
     self.blueView.frame = CGRectMake(squareDimension * 2, squareDimension * 2, squareDimension, squareDimension);
     self.yellowView.frame = CGRectMake(squareDimension * 3, squareDimension * 3, squareDimension, squareDimension);
+    [self performSelector:@selector(layoutSquares) withObject:self afterDelay:1.0];
+}
+
+- (void)startCycleViews
+{
+    [self layoutSquares];
 }
 
 /*
